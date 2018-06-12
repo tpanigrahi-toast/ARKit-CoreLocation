@@ -426,8 +426,8 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
             var scale: Float
 
             if annotationNode.scaleRelativeToDistance {
-                scale = appliedScale.y
-                annotationNode.annotationNode.scale = appliedScale
+                scale = Float(2300/distance)
+                annotationNode.annotationNode.scale = SCNVector3(x: scale, y: scale, z: scale)
             } else {
                 //Scale it to be an appropriate size so that it can be seen
                 scale = Float(adjustedDistance) * 0.181
@@ -439,7 +439,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
                 annotationNode.annotationNode.scale = SCNVector3(x: scale, y: scale, z: scale)
             }
 
-            annotationNode.pivot = SCNMatrix4MakeTranslation(0, -1.1 * scale, 0)
+            annotationNode.pivot = SCNMatrix4MakeTranslation(0, 0.4 * scale, 0)
         }
 
         SCNTransaction.commit()
